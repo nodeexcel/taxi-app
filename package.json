@@ -1,0 +1,34 @@
+{
+  "name": "taxi-app",
+  "version": "1.0.0",
+  "description": " A small ride shareing app backend written in js and express",
+  "main": "index.js",
+  "scripts": {
+    "dev": "nodemon index.mjs",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/nodeexcel/taxi-app.git"
+  },
+  "author": "nodeexcel",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/nodeexcel/taxi-app/issues"
+  },
+  "homepage": "https://github.com/nodeexcel/taxi-app#readme",
+  "dependencies": {
+    "bcrypt": "^5.1.0",
+    "cors": "^2.8.5",
+    "dotenv": "^16.0.3",
+    "express": "^4.18.2",
+    "http-errors": "^2.0.0",
+    "jsonwebtoken": "^9.0.0",
+    "morgan": "^1.10.0",
+    "pg": "^8.9.0",
+    "sequelize": "^6.28.1"
+  },
+  "devDependencies": {
+    "sequelize-cli": "^6.6.0"
+  }
+}
