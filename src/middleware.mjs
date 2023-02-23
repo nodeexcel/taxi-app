@@ -1,6 +1,6 @@
 import jwt from 'jsonwebtoken';
-import User from '../models/user.mjs';
-import UserProfile from '../models/userProfile.mjs';
+import User from './models/user.mjs';
+import UserProfile from './models/userProfile.mjs';
 
 const { JWT_SECRET_KEY } = process.env;
 
@@ -34,8 +34,9 @@ export const authenticateUser = async (req, res, next) => {
     }
     req.user = user;
     next();
+  } else {
+    return res
+      .status(401)
+      .json({ success: false, message: 'Token missing or malformed Please pass authorization' });
   }
-  return res
-    .status(401)
-    .json({ success: false, message: 'Token missing or malformed Please pass authorization' });
 };
