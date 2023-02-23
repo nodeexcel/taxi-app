@@ -5,8 +5,8 @@
   "main": "index.js",
   "scripts": {
     "dev": "nodemon index.mjs",
-    "lint": "eslint ./**/*.mjs --fix  && npx prettier --write -u . && git add .",
-    "precommit": "npm run lint",
+    "lint": "eslint ./**/*.mjs --fix  && npx prettier --write -u .",
+    "precommit": "npm run lint && git add .",
     "start": "node index.mjs",
     "db:migrate":"npx sequelize-cli db:migrate",
     "db:migrate:undo": "npx sequelize-cli db:migrate:undo",
