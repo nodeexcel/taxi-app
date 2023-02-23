@@ -1,5 +1,4 @@
 import express from 'express';
-import bodyParser from 'body-parser';
 import * as UserController from './controllers/user.mjs';
 
 import { errorHandler } from './helpers/errorhandler.mjs';
