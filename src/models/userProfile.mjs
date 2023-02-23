@@ -1,7 +1,6 @@
 import { Model, DataTypes } from 'sequelize';
 import { sequelize } from '../db.mjs';
 
-
 class UserProfile extends Model {}
 export default UserProfile;
 
@@ -36,9 +35,9 @@ UserProfile.init(
     // walletId:{
     //     type: DataTypes.UUID,
     //   },
-    userId:{
-        type: DataTypes.UUID, 
-    } 
+    userId: {
+      type: DataTypes.UUID,
+    },
   },
   {
     timestamps: true,

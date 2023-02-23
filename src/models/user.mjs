@@ -2,7 +2,6 @@ import { Model, DataTypes } from 'sequelize';
 import { sequelize } from '../db.mjs';
 import UserProfile from './userProfile.mjs';
 
-
 class User extends Model {}
 export default User;
 
@@ -42,4 +41,3 @@ User.init(
 User.hasOne(UserProfile, {
   foreignKey: 'userId',
 });
-

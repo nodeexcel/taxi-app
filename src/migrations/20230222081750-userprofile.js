@@ -7,7 +7,7 @@ module.exports = {
         type: Sequelize.DataTypes.UUID,
         defaultValue: Sequelize.DataTypes.UUIDV4,
       },
-      firstname:{
+      firstname: {
         type: Sequelize.DataTypes.STRING,
       },
       lastname: {
@@ -22,14 +22,14 @@ module.exports = {
       isActive: {
         type: Sequelize.DataTypes.BOOLEAN,
       },
-      userId:{
-        type:Sequelize.DataTypes.UUID,
-        references:{
-          model:{
-            tableName:'users'
+      userId: {
+        type: Sequelize.DataTypes.UUID,
+        references: {
+          model: {
+            tableName: 'users',
           },
-          key:'id'
-        }
+          key: 'id',
+        },
       },
       created_at: {
         allowNull: false,

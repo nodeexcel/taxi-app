@@ -9,13 +9,12 @@ import './src/db.mjs';
 import ApiRouter from './src/routes.mjs';
 import { globalErrorHandler } from './src/middleware.mjs';
 
-
 const { PORT } = process.env;
 
 const __dirname = path.dirname(fileURLToPath(import.meta.url));
 
-process.on('uncaughtException', err => console.error(err, err.stack));
-process.on('unhandledRejection', err => console.error(err, err.stack));
+process.on('uncaughtException', (err) => console.error(err, err.stack));
+process.on('unhandledRejection', (err) => console.error(err, err.stack));
 
 const app = express();
 const server = http.createServer(app);
