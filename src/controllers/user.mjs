@@ -56,13 +56,21 @@ export const login = async (req, res) => {
     if (!Helpers.isValidEmail(email)) {
         return res.status(400).json({ message: 'Please enter a valid email address.' });
     }
-    const user = await User.findOne({ attributes: ['id', 'email', 'password', 'username'], where: { email: email }, include: [{ model: UserProfile }] }
-    );
+    const user = await User.findOne({
+        attributes: ['id', 'email', 'password', 'username'],
+        where: { email: email },
+        include: [{ model: UserProfile }]
+    });
+
     if(!user){
         throw new httpErrors.BadRequest(INVALID_CRED);
     }
     const isValidPassword = await bcrypt.compare(password, user.password);
     if (!isValidPassword) throw new httpErrors.BadRequest(INVALID_CRED);
+
+    // Remove password property from user object
+    delete user.dataValues.password;
+
     const token = jwt.sign(
         {
             sub: user.id,
@@ -71,5 +79,5 @@ export const login = async (req, res) => {
         JWT_SECRET_KEY
     );
 
-    res.status(200).json({ token,   user: { ...user, password: undefined },});
+    res.status(200).json({ token, user });
 }
