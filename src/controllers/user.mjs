@@ -71,5 +71,5 @@ export const login = async (req, res) => {
         JWT_SECRET_KEY
     );
 
-    res.status(200).json({ token, user });
+    res.status(200).json({ token,   user: { ...user, password: undefined },});
 }
