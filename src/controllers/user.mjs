@@ -81,7 +81,7 @@ export const login = async (req, res) => {
 export const updateUser = async (req, res) => {
   const userId = req.user.id;
   const update = req.body;
-  console.log(update);
+
   if (update.email && !Helpers.isValidEmail(update.email)) {
     return res.status(400).json({ success: false, message: 'Please enter a valid email address.' });
   }
@@ -90,6 +90,11 @@ export const updateUser = async (req, res) => {
       success: false,
       message: 'Please enter a valid phone number.',
     });
+  }
+
+  if (update.password) {
+    const hashedPassword = await bcrypt.hash(update.password || '', 10);
+    update.password = hashedPassword;
   }
 
   // Update user with given data
