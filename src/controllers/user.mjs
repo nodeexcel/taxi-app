@@ -50,7 +50,7 @@ export const create = async (req, res) => {
 export const login = async (req, res) => {
   const { email, password } = req.body;
   if (!Helpers.isValidEmail(email)) {
-    return res.status(400).json({ message: 'Please enter a valid email address.' });
+    return res.status(400).json({ success: false, message: 'Please enter a valid email address.' });
   }
   const user = await User.findOne({
     attributes: ['id', 'email', 'password', 'username'],
@@ -79,16 +79,23 @@ export const login = async (req, res) => {
 };
 
 export const updateUser = async (req, res) => {
-  const { userId } = req.params;
+  const userId = req.user.id;
   const update = req.body;
-
-  const { success, message } = await Helpers.validateUserInputs(update.email, update.phoneNo);
-  if (!success) {
-    return res.status(400).json({ success, message });
+  console.log(update);
+  if (update.email && !Helpers.isValidEmail(update.email)) {
+    return res.status(400).json({ success: false, message: 'Please enter a valid email address.' });
   }
-  //update user with given data
-  await User.update({ update, where: { id: userId } });
+  if (update.phoneNo && Helpers.isValidPhoneNo(update.phoneNo)) {
+    return res.status(400).json({
+      success: false,
+      message: 'Please enter a valid phone number.',
+    });
+  }
 
+  // Update user with given data
+  await User.update(update, { where: { id: userId } });
+
+  // Retrieve updated user data with associated profile
   const user = await User.findOne({
     where: { id: userId },
     include: [{ model: UserProfile }],
