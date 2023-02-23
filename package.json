@@ -1,11 +1,13 @@
 {
   "name": "taxi-app",
   "version": "1.0.0",
-  "description": " A small ride shareing app backend written in js and express",
+  "description": " A small ride sharing app backend written in js and express",
   "main": "index.js",
   "scripts": {
     "dev": "nodemon index.mjs",
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "lint": "eslint ./**/*.mjs --fix",
+    "precommit": "npm run lint",
+    "start": "node index.mjs"
   },
   "repository": {
     "type": "git",
@@ -29,6 +31,12 @@
     "sequelize": "^6.28.1"
   },
   "devDependencies": {
+    "eslint": "^8.34.0",
+    "eslint-config-prettier": "^8.6.0",
+    "eslint-plugin-import": "^2.27.5",
+    "eslint-plugin-prettier": "^4.2.1",
+    "husky": "^8.0.3",
+    "prettier": "^2.8.4",
     "sequelize-cli": "^6.6.0"
   }
 }
