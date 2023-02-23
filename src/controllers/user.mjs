@@ -12,11 +12,26 @@ export const create = async (req, res) => {
   const { username, password, email, phoneNo, firstname, lastname } = req.body;
 
   if (!Helpers.isValidPhoneNo(phoneNo)) {
-    return res.status(400).json({ message: 'Please enter a valid phone number.' });
+    return res.status(400).json({ success: false, message: 'Please enter a valid phone number.' });
   }
 
   if (!Helpers.isValidEmail(email)) {
-    return res.status(400).json({ message: 'Please enter a valid email address.' });
+    return res.status(400).json({ success: false, message: 'Please enter a valid email address.' });
+  }
+
+  const userExist = await Helpers.userExists(email);
+  const phoneNoExist = await Helpers.phoneNoExists(phoneNo);
+
+  if (userExist) {
+    return res
+      .status(400)
+      .json({ success: false, message: 'User with given Email address already registered.' });
+  }
+
+  if (phoneNoExist) {
+    return res
+      .status(400)
+      .json({ success: false, message: 'User with given Phone Number already registered.' });
   }
 
   const hashedPassword = await bcrypt.hash(password || '', 10);
@@ -47,7 +62,7 @@ export const create = async (req, res) => {
     JWT_SECRET_KEY,
   );
 
-  res.status(201).json({ token, user: response });
+  res.status(201).json({ success: true, token, user: response });
 };
 
 export const login = async (req, res) => {
@@ -78,7 +93,7 @@ export const login = async (req, res) => {
     JWT_SECRET_KEY,
   );
 
-  res.status(200).json({ token, user });
+  res.status(200).json({ success: true, token, user });
 };
 
 export const updateUser = async (req, res) => {
@@ -91,11 +106,13 @@ export const updateUser = async (req, res) => {
   if (update.email && !Helpers.isValidEmail(update?.email)) {
     return res.status(400).json({ message: 'Please enter a valid email address.' });
   }
+  //update user with given data
   await User.update({ update, where: { id: userId } });
-  await UserProfile.update({ update, where: { id: userId } });
+
   const user = await User.findOne({
     where: { id: userId },
     include: [{ model: UserProfile }],
   });
-  res.status(200).json({ user });
+
+  res.status(200).json({ success: true, user });
 };
