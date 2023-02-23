@@ -4,14 +4,13 @@
   "description": " A small ride sharing app backend written in js and express",
   "main": "index.js",
   "scripts": {
-    "dev": "nodemon index.mjs",
+    "dev": "nodemon ./src/index.mjs",
     "lint": "eslint ./**/*.mjs --fix  && npx prettier --write -u .",
     "precommit": "npm run lint && git add .",
-    "start": "node index.mjs",
-    "db:migrate":"npx sequelize-cli db:migrate",
+    "start": "node ./src/index.mjs",
+    "db:migrate": "npx sequelize-cli db:migrate",
     "db:migrate:undo": "npx sequelize-cli db:migrate:undo",
     "db:migrate:undo:all": "npx sequelize-cli db:migrate:undo:all"
-
   },
   "repository": {
     "type": "git",
@@ -32,7 +31,8 @@
     "jsonwebtoken": "^9.0.0",
     "morgan": "^1.10.0",
     "pg": "^8.9.0",
-    "sequelize": "^6.28.1"
+    "sequelize": "^6.28.1",
+    "swagger-ui-express": "^4.6.1"
   },
   "devDependencies": {
     "eslint": "^8.34.0",

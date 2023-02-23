@@ -4,13 +4,13 @@ import express from 'express';
 import cors from 'cors';
 import morgan from 'morgan';
 import swaggerUi from 'swagger-ui-express';
-import swaggerSpecs from './swaggerUiConfig.mjs'
+import swaggerSpecs from './swaggerUiConfig.mjs';
 import './db.mjs';
 import ApiRouter from './routes.mjs';
 import { globalErrorHandler } from './middleware.mjs';
 
 const { PORT } = process.env;
-
+console.log(swaggerSpecs)
 
 process.on('uncaughtException', (err) => console.error(err, err.stack));
 process.on('unhandledRejection', (err) => console.error(err, err.stack));
