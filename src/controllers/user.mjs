@@ -92,6 +92,10 @@ export const updateUser = async (req, res) => {
     });
   }
 
+  if (update.password) {
+    const hashedPassword = await bcrypt.hash(update.password || '', 10);
+    update.password = hashedPassword;
+  }
   // Update user with given data
   await User.update(update, { where: { id: userId } });
 
