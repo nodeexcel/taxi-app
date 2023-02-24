@@ -7,7 +7,6 @@ import userValidators from '../validators/userValidators.mjs';
 
 const router = express.Router();
 
-
 router.get('/user', authenticateUser, errorHandler(UserController.getUser));
 
 router.post(
