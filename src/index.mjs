@@ -42,7 +42,7 @@ app.use('/api', ApiRouter);
 
 // swagger UI
 app.use('/', swaggerUi.serve);
-app.get('/', swaggerUi.setup(swaggerSpecs, { explorer: true }));
+app.get('/', swaggerUi.setup(swaggerSpecs));
 
 // global error handler
 app.use(globalErrorHandler);
