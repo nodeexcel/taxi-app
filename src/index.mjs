@@ -4,6 +4,7 @@ import express from 'express';
 import cors from 'cors';
 import morgan from 'morgan';
 import swaggerUi from 'swagger-ui-express';
+import path from 'path'
 import swaggerSpecs from './swaggerUiConfig.mjs';
 import './db.mjs';
 import ApiRouter from './routes/routes.mjs';
@@ -17,8 +18,10 @@ process.on('unhandledRejection', (err) => console.error(err, err.stack));
 const app = express();
 const server = http.createServer(app);
 // app.use(helmet());
+
 app.use(cors());
 app.use(express.urlencoded({ extended: true }));
+app.use(express.static(path.join('src','public')))
 app.use(express.json({ limit: '50mb' }));
 
 if (process.env.NODE_ENV === 'development') {
