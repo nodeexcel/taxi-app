@@ -1,6 +1,5 @@
 import Joi from 'joi';
 
-
 const userValidators = {
   postUserCreate: (req, res, next) => {
     const result = Joi.object({
