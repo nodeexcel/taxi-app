@@ -6,7 +6,7 @@ import morgan from 'morgan';
 import swaggerUi from 'swagger-ui-express';
 import swaggerSpecs from './swaggerUiConfig.mjs';
 import './db.mjs';
-import ApiRouter from './routes.mjs';
+import ApiRouter from './routes/routes.mjs';
 import { globalErrorHandler } from './middleware.mjs';
 
 const { PORT } = process.env;
@@ -43,7 +43,8 @@ app.get('/healths', (req, res) => res.send('Online'));
 app.use('/api', ApiRouter);
 
 // swagger UI
-app.use( "/", swaggerUi.serve, swaggerUi.setup(swaggerSpecs, { explorer: true }));
+app.use('/', swaggerUi.serve);
+app.get('/', swaggerUi.setup(swaggerSpecs, { explorer: true }));
 
 // global error handler
 app.use(globalErrorHandler);
