@@ -113,7 +113,18 @@ export const updateUserProfile = async (req, res) => {
   const update = req.body;
 
   //update user with given data
-  await UserProfile.update({ update, where: { userId: userId } });
+  await UserProfile.update(update, { where: { userId: userId } });
+
+  const user = await User.findOne({
+    where: { id: userId },
+    include: [{ model: UserProfile }],
+  });
+
+  res.status(200).json({ success: true, user });
+};
+
+export const getUser = async (req, res) => {
+  const userId = req.user.id;
 
   const user = await User.findOne({
     where: { id: userId },
