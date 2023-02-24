@@ -1,9 +1,10 @@
 import express from 'express';
 import * as UserController from '../controllers/user.mjs';
-
+import fileService from '../services/multerService.mjs';
 import { errorHandler } from '../helpers/errorHandler.mjs';
 import { authenticateUser } from '../middleware.mjs';
 import userValidators from '../validators/userValidators.mjs';
+
 
 const router = express.Router();
 
@@ -30,6 +31,14 @@ router.put(
   errorHandler(userValidators.putUserProfile),
   authenticateUser,
   errorHandler(UserController.updateUserProfile),
+);
+
+router.post(
+  '/user/userprofilepicture',
+  // errorHandler(userValidators.putUserProfile),
+  authenticateUser,
+  errorHandler(fileService.single('profileImage')),
+  errorHandler(UserController.updateUserProfilePicture),
 );
 
 export default router;
