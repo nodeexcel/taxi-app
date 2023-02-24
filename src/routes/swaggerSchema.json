@@ -1,22 +1,14 @@
 {
   "userRegister": {
     "summary": "This api will create new user",
-    "tags": [
-      "Users"
-    ],
+    "tags": ["Users"],
     "requestBody": {
       "required": true,
       "content": {
         "application/json": {
           "schema": {
             "type": "object",
-            "required": [
-              "username",
-              "password",
-              "email",
-              "firstname",
-              "lastname"
-            ],
+            "required": ["username", "password", "email", "firstname", "lastname"],
             "properties": {
               "username": {
                 "type": "string"

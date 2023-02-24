@@ -36,15 +36,13 @@ if (process.env.NODE_ENV === 'development') {
   app.use(morgan('Completed :method :url :status in :response-time ms - :res[content-length]'));
 }
 
-
-
 // routes
 app.get('/healths', (req, res) => res.send('Online'));
 app.use('/api', ApiRouter);
 
 // swagger UI
 app.use('/', swaggerUi.serve);
-app.get('/', swaggerUi.setup(swaggerSpecs, { explorer: true }));
+app.get('/', swaggerUi.setup(swaggerSpecs));
 
 // global error handler
 app.use(globalErrorHandler);
