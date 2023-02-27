@@ -5,6 +5,7 @@ import cors from 'cors';
 import morgan from 'morgan';
 import swaggerUi from 'swagger-ui-express';
 import swaggerSpecs from './swaggerUiConfig.mjs';
+import path from 'path';
 import './db.mjs';
 import ApiRouter from './routes/routes.mjs';
 import { globalErrorHandler } from './middleware.mjs';
@@ -20,6 +21,7 @@ const server = http.createServer(app);
 app.use(cors());
 app.use(express.urlencoded({ extended: true }));
 app.use(express.json({ limit: '50mb' }));
+app.use(express.static(path.join('src', 'public')));
 
 if (process.env.NODE_ENV === 'development') {
   app.use(morgan('dev'));
