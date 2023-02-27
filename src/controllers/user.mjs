@@ -133,3 +133,17 @@ export const getUser = async (req, res) => {
 
   res.status(200).json({ success: true, user });
 };
+
+export const updateUserProfilePicture = async (req, res) => {
+  if (!req.file)
+    return res
+      .status(400)
+      .json({ success: false, message: 'there is a problem while uploading the profile picture.' });
+  const userId = req.user.id;
+
+  const userProfile = await UserProfile.findOne({ where: { userId } });
+  userProfile.dataValues.profilePicture = `/uploads/${req.file.filename}`;
+  await userProfile.save();
+
+  res.status(200).json({ success: true });
+};
