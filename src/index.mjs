@@ -7,7 +7,7 @@ import swaggerUi from 'swagger-ui-express';
 import swaggerSpecs from './swaggerUiConfig.mjs';
 import path from 'path';
 import './db.mjs';
-import ApiRouter from './routes/routes.mjs';
+import ApiRouter from './routes/index.mjs';
 import { globalErrorHandler } from './middleware.mjs';
 
 const { PORT } = process.env;

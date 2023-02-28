@@ -7,33 +7,33 @@ import userValidators from '../validators/userValidators.mjs';
 
 const router = express.Router();
 
-router.get('/user', authenticateUser, errorHandler(UserController.getUser));
+router.get('/', authenticateUser, errorHandler(UserController.getUser));
 
 router.post(
-  '/user/create',
+  '/create',
   errorHandler(userValidators.postUserCreate),
   errorHandler(UserController.create),
 );
 router.post(
-  '/user/login',
+  '/login',
   errorHandler(userValidators.postUserLogin),
   errorHandler(UserController.login),
 );
 router.put(
-  '/user/update',
+  '/update',
   errorHandler(userValidators.putUserUpdate),
   authenticateUser,
   errorHandler(UserController.updateUser),
 );
 router.put(
-  '/user/userprofile',
+  '/userprofile',
   errorHandler(userValidators.putUserProfile),
   authenticateUser,
   errorHandler(UserController.updateUserProfile),
 );
 
 router.post(
-  '/user/userprofilepicture',
+  '/userprofilepicture',
   authenticateUser,
   errorHandler(fileService.single('profileImage')),
   errorHandler(UserController.updateUserProfilePicture),

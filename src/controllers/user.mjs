@@ -43,7 +43,6 @@ export const create = async (req, res) => {
     },
     JWT_SECRET_KEY,
   );
-
   res.status(201).json({ success: true, token, user: response });
 };
 
