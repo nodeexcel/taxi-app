@@ -2,10 +2,10 @@ import { Model, DataTypes } from 'sequelize';
 import { sequelize } from '../db.mjs';
 import UserProfile from './userProfile.mjs';
 
-class DriverProfile extends Model {}
-export default DriverProfile;
+class PassengerProfile extends Model {}
+export default PassengerProfile;
 
-DriverProfile.init(
+PassengerProfile.init(
   {
     id: {
       type: DataTypes.UUID,
@@ -28,12 +28,12 @@ DriverProfile.init(
   {
     timestamps: true,
     sequelize,
-    modelName: 'DriverProfile',
-    tableName: 'driverprofile',
+    modelName: 'PassengerProfile',
+    tableName: 'passengerprofile',
     createdAt: 'created_at',
     updatedAt: 'updated_at',
   },
 );
-DriverProfile.hasOne(UserProfile, {
+PassengerProfile.hasOne(UserProfile, {
   foreignKey: 'userProfileId',
 });

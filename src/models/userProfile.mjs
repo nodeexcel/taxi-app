@@ -21,7 +21,7 @@ UserProfile.init(
       type: DataTypes.STRING,
     },
     warnings: {
-      type: DataTypes.NUMBER,
+      type: DataTypes.INTEGER,
     },
     isActive: {
       type: DataTypes.BOOLEAN,

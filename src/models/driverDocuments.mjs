@@ -2,42 +2,53 @@ import { Model, DataTypes } from 'sequelize';
 import { sequelize } from '../db.mjs';
 import DriverProfile from './driverProfile.mjs';
 
-class Route extends Model {}
-export default Route;
+class DriverDocuments extends Model {}
+export default DriverDocuments;
 
-Route.init(
+DriverDocuments.init(
   {
     id: {
       type: DataTypes.UUID,
       primaryKey: true,
       defaultValue: DataTypes.UUIDV4,
     },
-    routeStart: {
+    adhaar: {
       type: DataTypes.STRING,
     },
-    routeEnd: {
+    panCard: {
       type: DataTypes.STRING,
     },
-    scheduleDate: {
+    drivingLicence: {
       type: DataTypes.STRING,
     },
-    active: {
+    isVerified: {
       type: DataTypes.BOOLEAN,
+    },
+    bankName: {
+      type: DataTypes.STRING,
+    },
+    ifscCode: {
+      type: DataTypes.STRING,
+    },
+    accountNo: {
+      type: DataTypes.STRING,
     },
     driverId: {
       type: DataTypes.UUID,
-    },
+    }
   },
   {
     timestamps: true,
     sequelize,
-    modelName: 'Route',
-    tableName: 'route',
+    modelName: 'DriverDocuments',
+    tableName: 'driverdocuments',
     createdAt: 'created_at',
     updatedAt: 'updated_at',
   },
 );
-Route.belongsTo(DriverProfile,{
+DriverProfile.hasOne(DriverDocuments,{
+  foreignKey:"driverId"
+})
+DriverDocuments.belongsTo(DriverProfile,{
   foreignKey:'driverId'
 })
-

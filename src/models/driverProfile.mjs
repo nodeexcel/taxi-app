@@ -20,10 +20,10 @@ DriverProfile.init(
       unique: true,
     },
     totalTrips: {
-      type: DataTypes.NUMBER,
+      type: DataTypes.INTEGER,
     },
     successFullTrips: {
-      type: DataTypes.NUMBER,
+      type: DataTypes.INTEGER,
     },
     address: {
       type: DataTypes.STRING,

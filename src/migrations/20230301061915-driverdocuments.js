@@ -1,25 +1,33 @@
-const { QueryInterface } = require("sequelize");
 
 module.exports = {
   async up (queryInterface, Sequelize) {
-    await queryInterface.createTable('route',{
+    await queryInterface.createTable('driverdocuments',{
       id: {
         allowNull: false,
         primaryKey: true,
         type: Sequelize.DataTypes.UUID,
         defaultValue: Sequelize.DataTypes.UUIDV4,
       },
-      routeStart: {
+      adhaar: {
         type: Sequelize.DataTypes.STRING,
       },
-      routeEnd: {
+      panCard: {
         type: Sequelize.DataTypes.STRING,
       },
-      scheduleDate: {
-        type: Sequelize.DataTypes.STRING,
+      drivingLicence: {
+        type:Sequelize.DataTypes.STRING
       },
-      active: {
+      isVerified: {
         type:Sequelize.DataTypes.BOOLEAN
+      },
+      bankName: {
+        type:Sequelize.DataTypes.STRING
+      },
+      ifscCode: {
+        type:Sequelize.DataTypes.STRING
+      },
+      accountNo: {
+        type:Sequelize.DataTypes.STRING
       },
       driverId: {
         type: Sequelize.DataTypes.UUID,
@@ -38,9 +46,10 @@ module.exports = {
         allowNull: false,
         type: Sequelize.DataTypes.DATE,
       },
-    })
+     })
   },
+
   async down (queryInterface, Sequelize) {
-    await queryInterface.dropTable('route')
+    await queryInterface.dropTable('driverdocuments')
   }
 };
