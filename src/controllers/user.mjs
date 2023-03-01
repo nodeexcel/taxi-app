@@ -85,7 +85,7 @@ export const updateUser = async (req, res) => {
   if (update.email && !Helpers.isValidEmail(update.email)) {
     return res.status(400).json({ success: false, message: 'Please enter a valid email address.' });
   }
-  if (update.phoneNo && Helpers.isValidPhoneNo(update.phoneNo)) {
+  if (update.phoneNo && !Helpers.isValidPhoneNo(update.phoneNo)) {
     return res.status(400).json({
       success: false,
       message: 'Please enter a valid phone number.',
