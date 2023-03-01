@@ -84,7 +84,7 @@ export const updateUser = async (req, res) => {
   if (update.email && !Helpers.isValidEmail(update.email)) {
     return res.status(400).json({ success: false, message: 'Please enter a valid email address.' });
   }
-  if (update.phoneNo && Helpers.isValidPhoneNo(update.phoneNo)) {
+  if (update.phoneNo && !Helpers.isValidPhoneNo(update.phoneNo)) {
     return res.status(400).json({
       success: false,
       message: 'Please enter a valid phone number.',
@@ -139,10 +139,9 @@ export const updateUserProfilePicture = async (req, res) => {
       .status(400)
       .json({ success: false, message: 'there is a problem while uploading the profile picture.' });
   const userId = req.user.id;
+  const profilePicture = `/uploads/${req.file.filename}`;
 
-  const userProfile = await UserProfile.findOne({ where: { userId } });
-  userProfile.dataValues.profilePicture = `/uploads/${req.file.filename}`;
-  await userProfile.save();
+  await UserProfile.update({ profilePicture: profilePicture }, { where: { userId } });
 
   res.status(200).json({ success: true });
 };
