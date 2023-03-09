@@ -13,13 +13,13 @@ Route.init(
       defaultValue: DataTypes.UUIDV4,
     },
     routeStart: {
-      type: DataTypes.STRING,
+      type: DataTypes.GEOMETRY,
     },
     routeEnd: {
-      type: DataTypes.STRING,
+      type: DataTypes.GEOMETRY,
     },
     scheduleDate: {
-      type: DataTypes.STRING,
+      type: DataTypes.DATE,
     },
     active: {
       type: DataTypes.BOOLEAN,

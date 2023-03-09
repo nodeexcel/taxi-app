@@ -17,13 +17,13 @@ Trips.init(
       type: DataTypes.STRING,
     },
     origin: {
-      type: DataTypes.STRING,
+      type: DataTypes.GEOMETRY,
     },
     destination: {
-      type: DataTypes.STRING,
+      type: DataTypes.GEOMETRY,
     },
     tripTime: {
-      type: DataTypes.STRING,
+      type: DataTypes.TIME,
     },
     driverId: {
       type: DataTypes.UUID,

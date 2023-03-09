@@ -19,13 +19,16 @@ Parcel.init(
       type: DataTypes.STRING,
     },
     dropLocation: {
-      type: DataTypes.STRING,
+      type: DataTypes.GEOMETRY(),
     },
     originImage: {
       type: DataTypes.STRING,
     },
     destinationImage: {
       type: DataTypes.STRING,
+    },
+    scheduleDate: {
+      type: DataTypes.DATE,
     },
     // driverId: {
     //   type: DataTypes.UUID,

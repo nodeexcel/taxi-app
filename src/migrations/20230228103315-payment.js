@@ -11,7 +11,7 @@ module.exports = {
         defaultValue: Sequelize.DataTypes.UUIDV4,
       },
       amount: {
-        type: Sequelize.DataTypes.INTEGER,
+        type: Sequelize.DataTypes.FLOAT,
       },
       tripId: {
         type: Sequelize.DataTypes.UUID,

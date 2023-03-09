@@ -11,13 +11,16 @@ module.exports = {
         type: Sequelize.DataTypes.STRING,
       },
       dropLocation: {
-        type: Sequelize.DataTypes.STRING,
+        type: Sequelize.DataTypes.GEOMETRY,
       },
       originImage: {
         type:Sequelize.DataTypes.STRING
       },
       destinationImage: {
         type:Sequelize.DataTypes.STRING
+      },
+      scheduleDate: {
+        type:Sequelize.DataTypes.DATE
       },
       passengerId: {
         type: Sequelize.DataTypes.UUID,

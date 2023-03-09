@@ -8,13 +8,13 @@ module.exports = {
       defaultValue: Sequelize.DataTypes.UUIDV4,
     },
     origin: {
-      type: Sequelize.DataTypes.STRING,
+      type: Sequelize.DataTypes.GEOMETRY,
     },
     destination: {
-      type: Sequelize.DataTypes.STRING,
+      type: Sequelize.DataTypes.GEOMETRY,
     },
     tripTime: {
-      type:Sequelize.DataTypes.STRING
+      type:Sequelize.DataTypes.TIME
     },
     driverId: {
       type: Sequelize.DataTypes.UUID,

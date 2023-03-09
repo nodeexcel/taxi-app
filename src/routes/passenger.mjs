@@ -2,13 +2,9 @@ import express from 'express';
 import * as passengerController from '../controllers/passenger.mjs';
 import { errorHandler } from '../helpers/errorHandler.mjs';
 import { authenticateUser } from '../middleware.mjs';
+import passengerValidator from '../validators/passengerValidators.mjs'
 
 const router = express.Router();
-// router.get(
-//   '/',
-//   authenticateUser,
-//   errorHandler(driverController.driverDetails),
-// );
 
 router.post(
   '/create',
@@ -16,12 +12,14 @@ router.post(
   errorHandler(passengerController.create),
 );
 
-// router.post(
-//   '/route',
-//   authenticateUser,
-//   errorHandler(driverValidators.postRouteCreate),
-//   errorHandler(driverController.createRoute),
-// );
+router.post(
+  '/parcel',
+  authenticateUser,
+  errorHandler(passengerValidator.postParcelCreate),
+  errorHandler(passengerController.createParcel),
+);
+
+
 
 
 export default router;

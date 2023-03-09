@@ -12,7 +12,7 @@ Payment.init(
       defaultValue: DataTypes.UUIDV4,
     },
     amount: {
-      type: DataTypes.NUMBER,
+      type: DataTypes.FLOAT,
     },
     tripId: {
       type: DataTypes.UUID,

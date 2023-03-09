@@ -1,4 +1,3 @@
-const { QueryInterface } = require("sequelize");
 
 module.exports = {
   async up (queryInterface, Sequelize) {
@@ -10,13 +9,13 @@ module.exports = {
         defaultValue: Sequelize.DataTypes.UUIDV4,
       },
       routeStart: {
-        type: Sequelize.DataTypes.STRING,
+        type: Sequelize.DataTypes.GEOMETRY,
       },
       routeEnd: {
-        type: Sequelize.DataTypes.STRING,
+        type: Sequelize.DataTypes.GEOMETRY,
       },
       scheduleDate: {
-        type: Sequelize.DataTypes.STRING,
+        type: Sequelize.DataTypes.DATE,
       },
       active: {
         type:Sequelize.DataTypes.BOOLEAN

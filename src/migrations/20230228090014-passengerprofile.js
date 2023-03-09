@@ -1,6 +1,4 @@
-'use strict';
 
-/** @type {import('sequelize-cli').Migration} */
 module.exports = {
   async up (queryInterface, Sequelize) {
     await queryInterface.createTable('passengerprofile',{
@@ -17,7 +15,7 @@ module.exports = {
         type: Sequelize.DataTypes.INTEGER,
       },
       preferredArea: {
-        type:Sequelize.DataTypes.STRING
+        type:Sequelize.DataTypes.GEOMETRY
       },
       userProfileId: {
         type: Sequelize.DataTypes.UUID,

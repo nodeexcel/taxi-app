@@ -13,7 +13,7 @@ PassengerProfile.init(
       defaultValue: DataTypes.UUIDV4,
     },
     preferredArea: {
-      type: DataTypes.STRING,
+      type: DataTypes.GEOMETRY,
     },
     totalTrips: {
       type: DataTypes.NUMBER,
